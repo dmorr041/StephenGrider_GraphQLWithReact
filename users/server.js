@@ -1,11 +1,13 @@
 const express = require('express');
 const expressGraphQL = require('express-graphql');
+const schema = require('./schema/schema');
 
 const app = new express();
 const PORT = process.env.PORT || 4000;
 
 app.use('/graphql', expressGraphQL({
-    graphiql: true
+    schema,
+    graphiql: true,
 }));
 
 app.listen(PORT, () => {
